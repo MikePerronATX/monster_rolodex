@@ -1,7 +1,7 @@
 import { Component } from 'react';
-//import logo from './logo.svg';
-import './App.css';
 import CardList from './components/card-list/card-list.component';
+import SearchBox from './components/search-box/search-box.component';
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -29,9 +29,7 @@ class App extends Component {
   }
 
   onSearchChange = (event) => {
-    console.log(event.target.value);
     const searchField = event.target.value.toLocaleLowerCase();
-
     this.setState(() => {
       return { searchField };
     });
@@ -46,12 +44,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          className="search-box"
-          type="search"
-          placeholder="search monsters"
-          onChange={onSearchChange}
-        />
+        < SearchBox
+        className='search-box'
+        onChangeHandler={onSearchChange}
+        placeholder = 'search monsters'/>
         <CardList monsters={filteredMonsters} />
       </div>
     );
